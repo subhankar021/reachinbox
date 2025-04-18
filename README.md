@@ -6,17 +6,18 @@ A brief description of your project.
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Next.js for server-side rendering
 - Tailwind CSS for utility-first styling
 - Fully responsive design
 - Easy to extend and customize
+- npm install
+- npx next dev
 
 ---
-﻿# use npm install 
- then npx next dev
-## 🛠️ Setup Instructions
+
+##  Setup Instructions
 
 Follow these steps to set up the project locally:
 
