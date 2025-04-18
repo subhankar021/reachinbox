@@ -2,7 +2,7 @@
 
 
 A brief description of your project.  
-*(Example: A modern web application built with Next.js, Tailwind CSS, and more.)*
+*(onebox)*
 
 ---
 
