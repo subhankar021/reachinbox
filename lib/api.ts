@@ -1,5 +1,6 @@
 import type { Email } from "./types"
 
+<<<<<<< HEAD
 // API base URL
 const API_BASE_URL = "https://hiring.reachinbox.xyz/api/v1"
 
@@ -7,11 +8,24 @@ const API_BASE_URL = "https://hiring.reachinbox.xyz/api/v1"
 const getAuthToken = () => {
   if (typeof window !== "undefined") {
     return localStorage.getItem("reachinbox_token") || "demo_token" // Use demo_token as fallback
+=======
+
+const API_BASE_URL = "https://hiring.reachinbox.xyz/api/v1"
+
+
+const getAuthToken = () => {
+  if (typeof window !== "undefined") {
+    return localStorage.getItem("reachinbox_token") || "demo_token" 
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   }
   return "demo_token"
 }
 
+<<<<<<< HEAD
 // Common headers for API requests
+=======
+
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 const getHeaders = () => {
   return {
     "Content-Type": "application/json",
@@ -19,7 +33,11 @@ const getHeaders = () => {
   }
 }
 
+<<<<<<< HEAD
 // Fetch all emails from the onebox list endpoint
+=======
+
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const fetchEmails = async (): Promise<Email[]> => {
   try {
     const response = await fetch(`${API_BASE_URL}/onebox/list`, {
@@ -35,12 +53,19 @@ export const fetchEmails = async (): Promise<Email[]> => {
     return data.threads || []
   } catch (error) {
     console.error("API Error:", error)
+<<<<<<< HEAD
     // Return mock data as fallback
+=======
+    
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     return mockEmails
   }
 }
 
+<<<<<<< HEAD
 // Fetch a single email thread
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const fetchEmailThread = async (threadId: string): Promise<Email | null> => {
   try {
     const response = await fetch(`${API_BASE_URL}/onebox/${threadId}`, {
@@ -56,13 +81,19 @@ export const fetchEmailThread = async (threadId: string): Promise<Email | null> 
     return data.thread || null
   } catch (error) {
     console.error("API Error:", error)
+<<<<<<< HEAD
     // Return mock data as fallback
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     const email = mockEmails.find((email) => email.id === threadId)
     return email || null
   }
 }
 
+<<<<<<< HEAD
 // Delete an email thread
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const deleteEmail = async (threadId: string): Promise<boolean> => {
   try {
     const response = await fetch(`${API_BASE_URL}/onebox/${threadId}`, {
@@ -77,12 +108,18 @@ export const deleteEmail = async (threadId: string): Promise<boolean> => {
     return true
   } catch (error) {
     console.error("API Error:", error)
+<<<<<<< HEAD
     // For mock data, we'll simulate a successful delete
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     return true
   }
 }
 
+<<<<<<< HEAD
 // Send a reply to a thread
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const sendReply = async (
   threadId: string,
   replyData: {
@@ -108,24 +145,36 @@ export const sendReply = async (
     return true
   } catch (error) {
     console.error("API Error:", error)
+<<<<<<< HEAD
     // For mock data, we'll simulate a successful reply
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     return true
   }
 }
 
+<<<<<<< HEAD
 // Google login redirect URL
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const getGoogleLoginUrl = (redirectUrl: string): string => {
   return `${API_BASE_URL}/auth/google-login?redirect_to=${encodeURIComponent(redirectUrl)}`
 }
 
+<<<<<<< HEAD
 // Set the auth token after successful login
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const setAuthToken = (token: string): void => {
   if (typeof window !== "undefined") {
     localStorage.setItem("reachinbox_token", token)
   }
 }
 
+<<<<<<< HEAD
 // Check if user is authenticated
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const isAuthenticated = (): boolean => {
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("reachinbox_token")
@@ -134,14 +183,20 @@ export const isAuthenticated = (): boolean => {
   return false
 }
 
+<<<<<<< HEAD
 // Logout - clear the auth token
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const logout = (): void => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("reachinbox_token")
   }
 }
 
+<<<<<<< HEAD
 // Mock data exactly matching the screenshots
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 const mockEmails: Email[] = [
   {
     id: "1",
@@ -239,7 +294,10 @@ Shaw Adley
   },
 ]
 
+<<<<<<< HEAD
 // Store emails in localStorage for persistence
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const getStoredEmails = (): Email[] => {
   if (typeof window !== "undefined") {
     const storedEmails = localStorage.getItem("reachinbox_emails")
@@ -256,7 +314,10 @@ export const storeEmails = (emails: Email[]): void => {
   }
 }
 
+<<<<<<< HEAD
 // Initialize stored emails if not already set
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 export const initializeStoredEmails = (): void => {
   if (typeof window !== "undefined" && !localStorage.getItem("reachinbox_emails")) {
     storeEmails(mockEmails)

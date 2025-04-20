@@ -46,6 +46,7 @@ export default function ThreadPage() {
             date: data.date,
           })
 
+<<<<<<< HEAD
           // Set the lead details
           setSelectedLead({
             name: data.from.name,
@@ -53,6 +54,15 @@ export default function ThreadPage() {
             phone: "9999999999", // From the screenshot
             linkedin: "www.linkedin.com/johndoe", // From the screenshot
             company: "ReachInbox", // From the screenshot
+=======
+          
+          setSelectedLead({
+            name: data.from.name,
+            email: data.from.email,
+            phone: "9999999999", 
+            linkedin: "www.linkedin.com/johndoe", 
+            company: "ReachInbox", 
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
             campaign: {
               name: "Campaign name",
               steps: 3,
@@ -112,7 +122,11 @@ export default function ThreadPage() {
     body: string
   }) => {
     try {
+<<<<<<< HEAD
       // This is now handled in the ReplyComposer component
+=======
+      
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       toast({
         title: "Success",
         description: "Reply sent successfully.",

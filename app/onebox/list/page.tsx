@@ -6,7 +6,11 @@ import { OneboxLayout } from "@/components/onebox-layout"
 import { EmailList } from "@/components/email-list"
 import { EmailThread } from "@/components/email-thread"
 import { LeadDetails } from "@/components/lead-details"
+<<<<<<< HEAD
 import { ReplyModal } from "@/components/reply-modal"
+=======
+import { ReplyComposer } from "@/components/reply-composer"
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts"
 import { useToast } from "@/hooks/use-toast"
 import { fetchEmails, deleteEmail, getStoredEmails, storeEmails, initializeStoredEmails } from "@/lib/api"
@@ -19,11 +23,18 @@ export default function OneboxListPage() {
   const [selectedThread, setSelectedThread] = useState<Thread | null>(null)
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+<<<<<<< HEAD
   const [showReplyModal, setShowReplyModal] = useState(false)
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
   const { toast } = useToast()
 
   // Initialize stored emails
+=======
+  const [showReplyComposer, setShowReplyComposer] = useState(false)
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false)
+  const { toast } = useToast()
+
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   useEffect(() => {
     initializeStoredEmails()
     loadEmails()
@@ -32,18 +43,27 @@ export default function OneboxListPage() {
   const loadEmails = async () => {
     setIsLoading(true)
     try {
+<<<<<<< HEAD
       // Try to fetch from API first
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const apiEmails = await fetchEmails()
       if (apiEmails && apiEmails.length > 0) {
         setEmails(apiEmails)
       } else {
+<<<<<<< HEAD
         // Fallback to stored emails
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
         const storedEmails = getStoredEmails()
         setEmails(storedEmails)
       }
     } catch (error) {
       console.error("Failed to load emails:", error)
+<<<<<<< HEAD
       // Fallback to stored emails
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const storedEmails = getStoredEmails()
       setEmails(storedEmails)
     } finally {
@@ -56,6 +76,7 @@ export default function OneboxListPage() {
     if (thread) {
       setSelectedThread(thread)
 
+<<<<<<< HEAD
       // Set the lead details
       setSelectedLead({
         name: "Orlando",
@@ -65,6 +86,16 @@ export default function OneboxListPage() {
         company: "Reachinbox",
         campaign: {
           name: "Campaign Name",
+=======
+      setSelectedLead({
+        name: "Orlando",
+        email: "johndoe@gmail.com",
+        phone: "9999999999",
+        linkedin: "www.linkedin.com/johndoe",
+        company: "ReachInbox",
+        campaign: {
+          name: "Campaign name",
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
           steps: 3,
           daysInSequence: 5,
           currentStep: 3,
@@ -77,6 +108,7 @@ export default function OneboxListPage() {
     if (!selectedThread) return
 
     try {
+<<<<<<< HEAD
       // Try to delete via API
       const success = await deleteEmail(selectedThread.id)
 
@@ -85,6 +117,14 @@ export default function OneboxListPage() {
         const updatedEmails = emails.filter((email) => email.id !== selectedThread.id)
         setEmails(updatedEmails)
         storeEmails(updatedEmails) // Update stored emails
+=======
+      const success = await deleteEmail(selectedThread.id)
+
+      if (success) {
+        const updatedEmails = emails.filter((email) => email.id !== selectedThread.id)
+        setEmails(updatedEmails)
+        storeEmails(updatedEmails) 
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 
         setSelectedThread(null)
         setShowDeleteConfirmation(false)
@@ -107,7 +147,11 @@ export default function OneboxListPage() {
   }
 
   const handleReply = () => {
+<<<<<<< HEAD
     setShowReplyModal(true)
+=======
+    setShowReplyComposer(true)
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   }
 
   const handleSendReply = async (replyData: {
@@ -119,7 +163,10 @@ export default function OneboxListPage() {
     try {
       if (!selectedThread) return
 
+<<<<<<< HEAD
       // Create a new message for the thread
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const newMessage: EmailMessage = {
         id: `${selectedThread.id}-${(selectedThread.messages?.length || 0) + 1}`,
         from: {
@@ -132,17 +179,27 @@ export default function OneboxListPage() {
         date: new Date().toISOString(),
       }
 
+<<<<<<< HEAD
       // Update the thread with the new message
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const updatedThread = {
         ...selectedThread,
         messages: [...(selectedThread.messages || []), newMessage],
       }
 
+<<<<<<< HEAD
       // Update the emails array
       const updatedEmails = emails.map((email) => (email.id === selectedThread.id ? updatedThread : email))
 
       setEmails(updatedEmails)
       storeEmails(updatedEmails) // Update stored emails
+=======
+      const updatedEmails = emails.map((email) => (email.id === selectedThread.id ? updatedThread : email))
+
+      setEmails(updatedEmails)
+      storeEmails(updatedEmails) 
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       setSelectedThread(updatedThread)
 
       toast({
@@ -150,7 +207,11 @@ export default function OneboxListPage() {
         description: "Reply sent successfully.",
       })
 
+<<<<<<< HEAD
       setShowReplyModal(false)
+=======
+      setShowReplyComposer(false)
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     } catch (error) {
       console.error("Failed to send reply:", error)
       toast({
@@ -162,7 +223,11 @@ export default function OneboxListPage() {
   }
 
   const handleCancelReply = () => {
+<<<<<<< HEAD
     setShowReplyModal(false)
+=======
+    setShowReplyComposer(false)
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   }
 
   // Set up keyboard shortcuts
@@ -181,9 +246,14 @@ export default function OneboxListPage() {
 
   return (
     <OneboxLayout>
+<<<<<<< HEAD
       <div className="flex h-full bg-black">
         {/* Email List - Exactly 278px width */}
         <div className="w-[278px] min-w-[278px] max-w-[278px] border-r border-[#1f1f1f] md:block hidden">
+=======
+      <div className="flex h-full">
+        <div className="w-1/4 border-r border-gray-800">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
           <EmailList
             emails={emails}
             isLoading={isLoading}
@@ -192,6 +262,7 @@ export default function OneboxListPage() {
           />
         </div>
 
+<<<<<<< HEAD
         {/* Email Thread - Fill remaining space */}
         <div className="flex-1 border-r border-[#1f1f1f]">
           {selectedThread ? (
@@ -202,6 +273,23 @@ export default function OneboxListPage() {
             />
           ) : (
             <div className="flex flex-col items-center justify-center h-full p-8 text-center bg-white dark:bg-[#101113]">
+=======
+        <div className="w-1/2 border-r border-gray-800">
+          {selectedThread ? (
+            <>
+              {showReplyComposer ? (
+                <ReplyComposer thread={selectedThread} onSend={handleSendReply} onCancel={handleCancelReply} />
+              ) : (
+                <EmailThread
+                  thread={selectedThread}
+                  onReply={handleReply}
+                  onDelete={() => setShowDeleteConfirmation(true)}
+                />
+              )}
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center h-full p-8 text-center">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
               <div className="w-32 h-32 mb-6 bg-blue-900/30 rounded-full flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -229,6 +317,7 @@ export default function OneboxListPage() {
           )}
         </div>
 
+<<<<<<< HEAD
         {/* Lead Details - Exactly 278px width */}
         <div className="w-[278px] min-w-[278px] max-w-[278px] lg:block hidden">
           {selectedLead && <LeadDetails lead={selectedLead} />}
@@ -305,6 +394,22 @@ export default function OneboxListPage() {
                 onClick={handleDeleteThread}
                 className="w-1/2 ml-2 bg-[#e53935] hover:bg-[#d32f2f]"
               >
+=======
+        <div className="w-1/4">{selectedLead && <LeadDetails lead={selectedLead} />}</div>
+      </div>
+
+      {}
+      {showDeleteConfirmation && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[#1a1a1a] rounded-lg p-6 max-w-md w-full">
+            <h3 className="text-xl font-semibold mb-4 text-center">Are you sure?</h3>
+            <p className="text-gray-400 text-center mb-6">Your selected email will be deleted.</p>
+            <div className="flex justify-between">
+              <Button variant="outline" onClick={() => setShowDeleteConfirmation(false)} className="w-1/2 mr-2">
+                Cancel
+              </Button>
+              <Button variant="destructive" onClick={handleDeleteThread} className="w-1/2 ml-2">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
                 Delete
               </Button>
             </div>

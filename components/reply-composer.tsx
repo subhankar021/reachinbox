@@ -5,7 +5,10 @@ import { Button } from "@/components/ui/button"
 import type { Thread } from "@/lib/types"
 import { sendReply } from "@/lib/api"
 import { useToast } from "@/hooks/use-toast"
+<<<<<<< HEAD
 import { ChevronDown, Link2, ImageIcon, Smile, Users, Code, X } from "lucide-react"
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 
 interface ReplyComposerProps {
   thread: Thread
@@ -20,11 +23,19 @@ interface ReplyComposerProps {
 
 export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) {
   const { toast } = useToast()
+<<<<<<< HEAD
   const [to, setTo] = useState("jeanne@icloud.com")
   const [from, setFrom] = useState("peter@reachinbox.com")
   const [fromName, setFromName] = useState("Peter")
   const [subject, setSubject] = useState(`Warmup Welcome`)
   const [body, setBody] = useState(`Hi jeanne,
+=======
+  const [to, setTo] = useState(thread.from.email)
+  const [from, setFrom] = useState("shaw@getmemeetings.com")
+  const [fromName, setFromName] = useState("Shaw Adley")
+  const [subject, setSubject] = useState(`${thread.subject}`)
+  const [body, setBody] = useState(`Hi ${thread.from.name.split(" ")[0]},
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 
 `)
   const [showVariables, setShowVariables] = useState(false)
@@ -41,17 +52,26 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
   const handleSend = async () => {
     setIsSending(true)
     try {
+<<<<<<< HEAD
       // Format the data according to the API requirements
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const replyData = {
         fromName,
         from,
         to,
         subject,
         body,
+<<<<<<< HEAD
         references: {}, // Add any references if needed
       }
 
       // Send the reply using the API
+=======
+        references: {},
+      }
+
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       const success = await sendReply(thread.id, replyData)
 
       if (success) {
@@ -80,18 +100,46 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
     }
   }
 
+<<<<<<< HEAD
   return (
     <div className="h-full flex flex-col bg-[#f9f9f9] dark:bg-[#101113]">
       <div className="p-4 border-b border-[#e0e0e0] dark:border-[#1f1f1f] flex justify-between items-center">
         <h2 className="text-lg font-medium">Reply</h2>
         <Button variant="ghost" size="icon" onClick={onCancel} className="h-8 w-8 rounded-md">
           <X size={20} />
+=======
+  const insertVariable = (variable: string) => {
+    setBody((prev) => prev + `{{${variable}}}`)
+    setShowVariables(false)
+  }
+
+  return (
+    <div className="h-full flex flex-col bg-background">
+      <div className="p-4 border-b border-border flex justify-between items-center">
+        <h2 className="text-lg font-medium">Reply</h2>
+        <Button variant="ghost" size="icon" onClick={onCancel}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
         </Button>
       </div>
 
       <div className="flex-1 overflow-auto p-4">
         <div className="space-y-4">
           <div className="flex items-center">
+<<<<<<< HEAD
             <span className="w-16 text-sm text-gray-500 dark:text-gray-400">To :</span>
             <input
               type="text"
@@ -103,6 +151,9 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
 
           <div className="flex items-center">
             <span className="w-16 text-sm text-gray-500 dark:text-gray-400">From :</span>
+=======
+            <span className="w-16 text-sm text-muted-foreground">From:</span>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
             <input
               type="text"
               value={from}
@@ -112,7 +163,21 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
           </div>
 
           <div className="flex items-center">
+<<<<<<< HEAD
             <span className="w-16 text-sm text-gray-500 dark:text-gray-400">Subject :</span>
+=======
+            <span className="w-16 text-sm text-muted-foreground">To:</span>
+            <input
+              type="text"
+              value={to}
+              onChange={(e) => setTo(e.target.value)}
+              className="flex-1 bg-transparent border-none focus:outline-none"
+            />
+          </div>
+
+          <div className="flex items-center">
+            <span className="w-16 text-sm text-muted-foreground">Subject:</span>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
             <input
               type="text"
               value={subject}
@@ -132,6 +197,7 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="p-4 border-t border-[#e0e0e0] dark:border-[#1f1f1f] flex items-center">
         <div className="flex-1 flex space-x-2">
           <Button
@@ -139,6 +205,11 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
             disabled={isSending}
             className="bg-gradient-to-r from-[#4285f4] to-[#5c7cfa] hover:from-[#3b78e7] hover:to-[#4c6fe3] text-white rounded-md flex items-center"
           >
+=======
+      <div className="p-4 border-t border-border flex items-center">
+        <div className="flex-1 flex space-x-2">
+          <Button onClick={handleSend} disabled={isSending} className="bg-blue-600 hover:bg-blue-700 uppercase">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
             {isSending ? (
               <>
                 <svg
@@ -157,6 +228,7 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
                 Sending...
               </>
             ) : (
+<<<<<<< HEAD
               "Send"
             )}
             <ChevronDown className="ml-2 h-4 w-4" />
@@ -257,6 +329,69 @@ export function ReplyComposer({ thread, onSend, onCancel }: ReplyComposerProps) 
           </div>
         </div>
       )}
+=======
+              "SEND"
+            )}
+          </Button>
+
+          <div className="relative">
+            <Button
+              variant="outline"
+              onClick={() => setShowVariables(!showVariables)}
+              className="flex items-center uppercase"
+            >
+              VARIABLES
+            </Button>
+
+            {showVariables && (
+              <div className="absolute bottom-full left-0 mb-2 w-48 bg-muted rounded-md shadow-lg z-10">
+                <div className="p-2">
+                  <h3 className="text-sm font-medium mb-2">Insert Variable</h3>
+                  <ul className="space-y-1">
+                    <li>
+                      <button
+                        onClick={() => insertVariable("FIRST_NAME")}
+                        className="w-full text-left px-2 py-1 text-sm rounded hover:bg-muted/70"
+                      >
+                        FIRST_NAME
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => insertVariable("LAST_NAME")}
+                        className="w-full text-left px-2 py-1 text-sm rounded hover:bg-muted/70"
+                      >
+                        LAST_NAME
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => insertVariable("COMPANY")}
+                        className="w-full text-left px-2 py-1 text-sm rounded hover:bg-muted/70"
+                      >
+                        COMPANY
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        onClick={() => insertVariable("EMAIL")}
+                        className="w-full text-left px-2 py-1 text-sm rounded hover:bg-muted/70"
+                      >
+                        EMAIL
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <Button variant="outline" className="uppercase">
+            SAVE
+          </Button>
+        </div>
+      </div>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     </div>
   )
 }

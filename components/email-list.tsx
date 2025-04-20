@@ -6,7 +6,10 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import type { Email } from "@/lib/types"
 import { cn } from "@/lib/utils"
+<<<<<<< HEAD
 import { ChevronDown, RefreshCw, Search } from "lucide-react"
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 
 interface EmailListProps {
   emails: Email[]
@@ -20,14 +23,21 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
   const [filter, setFilter] = useState("New Replies")
   const [sortOrder, setSortOrder] = useState("Newest")
 
+<<<<<<< HEAD
   // Filter emails based on search query and filter
+=======
+  
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   const filteredEmails = emails.filter((email) => {
     const matchesSearch =
       email.subject.toLowerCase().includes(searchQuery.toLowerCase()) ||
       email.from.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       email.from.name.toLowerCase().includes(searchQuery.toLowerCase())
 
+<<<<<<< HEAD
     // Apply additional filters based on the selected filter
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
     if (filter === "New Replies") {
       return matchesSearch
     }
@@ -35,7 +45,10 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
     return matchesSearch
   })
 
+<<<<<<< HEAD
   // Sort emails based on sort order
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
   const sortedEmails = [...filteredEmails].sort((a, b) => {
     if (sortOrder === "Newest") {
       return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -45,6 +58,7 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
   })
 
   return (
+<<<<<<< HEAD
     <div className="h-full flex flex-col w-[278px] dark:bg-[#000000] bg-[#fafafa]">
       <div className="p-4 border-b dark:border-[#1f1f1f] border-none">
         <div className="flex items-center justify-between mb-4">
@@ -65,12 +79,76 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
             type="search"
             placeholder="Search..."
             className="pl-10 dark:bg-[#1f1f1f] bg-[#f4f6f8] dark:border-[#1f1f1f] border-[#e6eaee] text-white"
+=======
+    <div className="h-full flex flex-col">
+      <div className="p-4 border-b border-border">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center">
+            <h2 className="text-blue-400 font-semibold">All Inbox(s)</h2>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="ml-1 text-blue-400"
+            >
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          </div>
+          <Button variant="ghost" size="icon" className="rounded-full">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-muted-foreground"
+            >
+              <path d="M20 20v-5h-5" />
+              <path d="M14 15.5 20 9" />
+              <path d="M4 4v5h5" />
+              <path d="M10 8.5 4 15" />
+            </svg>
+          </Button>
+        </div>
+        <div className="text-sm text-muted-foreground mb-4">25/25 Inboxes selected</div>
+        <div className="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <Input
+            type="search"
+            placeholder="Search..."
+            className="pl-10 bg-muted border-border"
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="flex items-center justify-between p-4 border-b dark:border-[#1f1f1f] border-none">
         <div className="flex items-center">
           <Badge className="dark:bg-[#1f1f1f] bg-[#ececec] text-[#5c7cfa] rounded-full mr-2 px-2 py-0.5 text-xs">
@@ -81,6 +159,29 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
         <div className="flex items-center">
           <span className="text-sm text-gray-400 mr-2">{sortOrder}</span>
           <ChevronDown size={16} className="text-gray-400" />
+=======
+      <div className="flex items-center justify-between p-4 border-b border-border">
+        <div className="flex items-center">
+          <Badge className="bg-blue-600 text-white rounded-full mr-2">{emails.length}</Badge>
+          <span className="text-sm font-medium">{filter}</span>
+        </div>
+        <div className="flex items-center">
+          <span className="text-sm text-muted-foreground mr-2">{sortOrder}</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-muted-foreground"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
         </div>
       </div>
 
@@ -103,7 +204,11 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
           </div>
         ) : sortedEmails.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full p-4 text-center">
+<<<<<<< HEAD
             <p className="text-gray-400">No emails found</p>
+=======
+            <p className="text-muted-foreground">No emails found</p>
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
           </div>
         ) : (
           <ul>
@@ -111,8 +216,13 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
               <li
                 key={email.id}
                 className={cn(
+<<<<<<< HEAD
                   "border-b dark:border-[#1f1f1f] border-none hover:bg-[#171819]/50 cursor-pointer",
                   selectedThreadId === email.id && "dark:bg-[#000000] bg-[#fafafa]",
+=======
+                  "border-b border-border hover:bg-muted/50 cursor-pointer",
+                  selectedThreadId === email.id && "bg-muted",
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
                 )}
                 onClick={() => onSelectThread(email.id)}
               >
@@ -122,6 +232,7 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
                       <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
                       <span className="font-medium">{email.from.name}</span>
                     </div>
+<<<<<<< HEAD
                     <span className="text-xs text-gray-400">
                       {new Date(email.date).toLocaleDateString("en-US", {
                         month: "short",
@@ -130,14 +241,30 @@ export function EmailList({ emails, isLoading, onSelectThread, selectedThreadId 
                     </span>
                   </div>
                   <p className="text-sm text-gray-500 mb-1">
+=======
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(email.date).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </span>
+                  </div>
+                  <p className="text-sm mb-1">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
                     {email.subject}
                     {email.subject.includes("7ZG2ZTV 6KG634E") ? "" : ""}
                   </p>
                   <div className="flex items-center">
+<<<<<<< HEAD
                     <Badge className="dark:bg-green-900/30 bg-[#f0f0f0] text-green-400 text-xs rounded-full mr-2 px-2 py-0.5">
                       Interested
                     </Badge>
                     <Badge className="dark:bg-green-900/30 bg-[#f0f0f0]  text-gray-400 text-xs rounded-full flex items-center px-2 py-0.5">
+=======
+                    <Badge className="bg-green-900 text-green-400 text-xs rounded-full mr-2">Interested</Badge>
+                    <Badge className="bg-muted text-muted-foreground text-xs rounded-full flex items-center">
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="12"

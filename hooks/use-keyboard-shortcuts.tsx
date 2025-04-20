@@ -11,7 +11,10 @@ export function useKeyboardShortcuts(shortcuts: KeyboardShortcuts) {
     const handleKeyDown = (event: KeyboardEvent) => {
       const key = event.key.toLowerCase()
 
+<<<<<<< HEAD
       // Skip if user is typing in an input, textarea, or contentEditable element
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       if (
         event.target instanceof HTMLInputElement ||
         event.target instanceof HTMLTextAreaElement ||

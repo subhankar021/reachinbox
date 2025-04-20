@@ -1,6 +1,9 @@
 "use client"
 
+<<<<<<< HEAD
 // Inspired by react-hot-toast library
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
 import * as React from "react"
 
 import type {
@@ -93,8 +96,12 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
+<<<<<<< HEAD
       // ! Side effects ! - This could be extracted into a dismissToast() action,
       // but I'll keep it here for simplicity
+=======
+      
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {

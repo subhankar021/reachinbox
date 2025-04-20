@@ -74,6 +74,7 @@
     @apply bg-background text-foreground;
   }
 }
+<<<<<<< HEAD
 
 /* Gradient button styles */
 .gradient-blue {
@@ -98,3 +99,5 @@
     @apply flex items-center w-full px-4 py-2 text-sm text-left text-white bg-blue-500 hover:bg-blue-600;
   }
 }
+=======
+>>>>>>> 6a3003a433f43b8f4a74971415a51d54521dbf60
